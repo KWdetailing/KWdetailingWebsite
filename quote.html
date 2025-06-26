@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get a Quote | KW Detailings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+      text-align: center;
+    }
+
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 550px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    button {
+      background: #e0c04f;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      margin-top: 20px;
+      
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .home-button {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #5a2d82;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Get Your Quote</h2>
+  <form id="quote-form">
+    <label>Type of Car:
+      <select name="carType" id="carType" required>
+        <option value="sedan">Sedan</option>
+        <option value="suv">SUV</option>
+        <option value="truck">Pickup Truck</option>
+        <option value="exotic">Exotic/Supercar</option>
+      </select>
+    </label>
+
+    <label>Size of Car:
+      <select name="carSize" id="carSize" required>
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="full">Full-Size</option>
+      </select>
+    </label>
+
+    <label>Service Area:
+      <select name="serviceArea" id="serviceArea" required>
+        <option value="interior">Interior Only</option>
+        <option value="exterior">Exterior Only</option>
+        <option value="both">Interior + Exterior</option>
+      </select>
+    </label>
+
+    <label>Package Level:
+      <select name="packageLevel" id="packageLevel" required>
+        <option value="basic">Basic</option>
+        <option value="standard">Standard</option>
+        <option value="deluxe">Deluxe</option>
+        <option value="premium">Premium</option>
+      </select>
+    </label>
+
+    <p id="result">Estimated Price: $0</p>
+
+    <button type="submit">Finalize Quote</button>
+  </form>
+
+  <a href="index.html" class="home-button">← Back to Home</a>
+
+  <script>
+    const pricingTable = {
+      interior: {
+        basic: 70,
+        standard: 90,
+        
+        premium: 130
+      },
+      exterior: {
+        basic: 60,
+        standard: 80,
+        deluxe: 95,
+        premium: 110
+      },
+      both: {
+        basic: 130,
+        standard: 170,
+        deluxe: 200,
+        premium: 240
+      }
+    };
+
+    const sizeSurcharge = {
+      small: 0,
+      medium: 15,
+      full: 30
+    };
+
+    const typeSurcharge = {
+      sedan: 0,
+      suv: 0,
+      truck: 20,
+      exotic: 60
+    };
+
+    const form = document.getElementById('quote-form');
+    const result = document.getElementById('result');
+
+    function calculatePrice() {
+      const type = document.getElementById('carType').value;
+      const size = document.getElementById('carSize').value;
+      const area = document.getElementById('serviceArea').value;
+      const level = document.getElementById('packageLevel').value;
+
+      const base = pricingTable[area][level];
+      const total = base + sizeSurcharge[size] + typeSurcharge[type];
+
+      result.textContent = `Screenshot this quote: $${total} and DM us @kw.detailings to book!`;
+      return total;
+    }
+
+    form.addEventListener('input', calculatePrice);
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const finalPrice = calculatePrice();
+      alert(`Screenshot this quote: $${finalPrice} and DM us @kw.detailings or my number #916-997-1356 to book!`);
+    });
+
+    // Initial price render
+    calculatePrice();
+  </script>
+
+</body>
+</html>

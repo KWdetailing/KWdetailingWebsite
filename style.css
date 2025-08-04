@@ -5036,6 +5036,25 @@ background: linear-gradient(
     rgba(255, 255, 255, 0.6) 50%,
     rgba(255, 255, 255, 0) 100%
   );
+
+  
+
+@media (max-width: 768px) {
+  .package-tabs {
+    gap: 3px;         /* Reduce spacing between buttons */
+    flex-wrap: nowrap; /* Prevent stacking */
+    justify-content: space-between; /* Optional: even spacing */
+  }
+
+  .package-tabs .tab {
+    padding: 8px 14px;   /* Slightly smaller buttons on mobile */
+    font-size: 14px;
+  }
+
+  .premium-tab {
+    padding: 8px 20px; /* Let Premium stay a bit wider */
+  }
+}
 }
 
 

@@ -3,70 +3,193 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <title>Get a Quote | KW Detailings</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      padding: 40px;
+      font-family: 'Poppins', sans-serif;
+      background: #2e3d2f;
+      padding: 40px 20px;
       text-align: center;
-    }
-
-    form {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 550px;
-      margin: 0 auto;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #333;
     }
 
     h2 {
-      color: #222;
-      margin-bottom: 20px;
+      color: white;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    form {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     }
 
     label {
       display: block;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-align: left;
+      font-size: 15px;
+    }
+
+    select, input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      margin-top: 6px;
+      background-color: #f9f9f9;
+      transition: 0.2s ease;
+    }
+
+    select:focus, input[type="number"]:focus {
+      outline: none;
+      border-color: #e0c04f;
+      background-color: #fffdf5;
+    }
+
+    .addon-section {
+      margin: 20px 0;
       text-align: left;
     }
 
-    select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
+    .addon-section label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     button {
       background: #e0c04f;
-      color: black;
-      padding: 10px 20px;
+      color: #000;
+      padding: 12px 28px;
       border: none;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 12px;
       cursor: pointer;
-      border-radius: 8px;
-      margin-top: 20px;
-      
+      margin-top: 30px;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #cfb042;
+      transform: scale(1.03);
     }
 
     #result {
-      margin-top: 20px;
+      margin-top: 25px;
       font-size: 18px;
-      font-weight: bold;
+      font-weight: 600;
+      background: #fff8dc;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #f0e0a0;
     }
 
     .home-button {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 25px;
       text-decoration: none;
-      color: #5a2d82;
+      color: #749a77;
       font-weight: bold;
     }
+
+    .home-button:hover {
+      color: #475c49;
+    }
+    .input-alt {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  font-size: 15px;
+  padding: 10px 4px;
+  margin-top: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.input-alt:focus {
+  outline: none;
+  border-bottom: 2px solid #e0c04f;
+  background: transparent;
+}
+.quote-card {
+  background: #f0f0f0;
+  padding: 40px 30px;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
+
+.quote-card h2 {
+  color: #617262;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+
+
+
+.popup-content {
+  position: relative; /* ← important for absolute positioning inside */
+  background-color: #fff;
+  padding: 30px 25px;
+  border-radius: 14px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* ← cleaner and consistent */
+  font-size: 22px;
+  background-color: #d1d1d1;
+  color: black;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
   </style>
 </head>
 <body>
-
+<div class="quote-card">
   <h2>Get Your Quote</h2>
   <form id="quote-form">
     <label>Type of Car:
@@ -103,74 +226,80 @@
       </select>
     </label>
 
-    <p id="result">Estimated Price: $0</p>
+    <div class="addon-section">
+      <label for="headlightCount">Add Headlight Restoration:</label>
+      <select id="headlightCount" name="headlightCount">
+        <option value="0">None</option>
+        <option value="1">1 Headlight (+$50)</option>
+        <option value="2">2 Headlights (+$100)</option>
+      </select>
+    </div>
+<label>Email Address:
+  <input type="email" name="user_email" id="user_email" class="input-alt" placeholder="Enter your email" required>
+</label>
 
+<label>Phone Number (optional):
+  <input type="tel" name="user_phone" id="user_phone" class="input-alt" placeholder="Enter your phone number">
+</label>
+
+    <p id="result">Estimated Price: $0</p>
     <button type="submit">Finalize Quote</button>
   </form>
 
-  <a href="index.html" class="home-button">← Back to Home</a>
+  <a href="index.html" class="home-button">&larr; Back to Home</a>
 
-  <script>
-    const pricingTable = {
-      interior: {
-        basic: 70,
-        standard: 90,
-        
-        premium: 130
-      },
-      exterior: {
-        basic: 60,
-        standard: 80,
-        deluxe: 95,
-        premium: 110
-      },
-      both: {
-        basic: 130,
-        standard: 170,
-        deluxe: 200,
-        premium: 240
-      }
-    };
 
-    const sizeSurcharge = {
-      small: 0,
-      medium: 15,
-      full: 30
-    };
-
-    const typeSurcharge = {
-      sedan: 0,
-      suv: 0,
-      truck: 20,
-      exotic: 60
-    };
-
-    const form = document.getElementById('quote-form');
-    const result = document.getElementById('result');
-
-    function calculatePrice() {
-      const type = document.getElementById('carType').value;
-      const size = document.getElementById('carSize').value;
-      const area = document.getElementById('serviceArea').value;
-      const level = document.getElementById('packageLevel').value;
-
-      const base = pricingTable[area][level];
-      const total = base + sizeSurcharge[size] + typeSurcharge[type];
-
-      result.textContent = `Screenshot this quote: $${total} and DM us @kw.detailings to book!`;
-      return total;
-    }
-
-    form.addEventListener('input', calculatePrice);
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const finalPrice = calculatePrice();
-      alert(`Screenshot this quote: $${finalPrice} and DM us @kw.detailings or my number #916-997-1356 to book!`);
-    });
-
-    // Initial price render
-    calculatePrice();
+    
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="quote.js"></script>
+<script src="quote.js"></script>
+
+<div id="quotePopup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" id="closePopup">&times;</span>
+    <h3>How This Works</h3>
+    <p>Fill out your car details and service preferences to generate a quote instantly. You can enter your email to get it sent to you, or just screenshot it and reach out via Instagram or text.</p>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+<script>
+  const popup = document.getElementById('quotePopup');
+  const closeBtn = document.getElementById('closePopup');
+
+  const quoteSection = document.querySelector('.quote-card');
+  let hasShownPopup = false;
+
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight / 1.5) &&
+      rect.bottom >= 0
+    );
+  }
+
+  function checkPopupTrigger() {
+    if (!hasShownPopup && isInViewport(quoteSection)) {
+      popup.style.display = 'flex';
+      hasShownPopup = true;
+    }
+  }
+
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+
+  window.addEventListener('scroll', checkPopupTrigger);
+</script>
 
 </body>
 </html>

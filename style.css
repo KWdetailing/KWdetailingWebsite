@@ -2520,7 +2520,7 @@ background: linear-gradient(
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 500px) {
   .package-tabs {
     gap: 0px;         /* Reduce spacing between buttons */
     flex-wrap: nowrap; /* Prevent stacking */

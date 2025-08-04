@@ -2430,20 +2430,8 @@ _____
   border: 1px solid #333;
 }
 
-
 .tab-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  font-weight: 600;
-  margin: 0 5px;
-  background-color: #2d2d2d;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.tab-btn {
-  padding: 10px 20px;
+  padding: 15px 20px;
   border: none;
   border-radius: 20px;
   font-weight: 600;
@@ -2513,4 +2501,18 @@ background: linear-gradient(
     rgba(255, 255, 255, 0.6) 50%,
     rgba(255, 255, 255, 0) 100%
   );
+}
+
+@media (max-width: 768px) {
+  .tab-btn {
+    padding: 20px 7px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    margin: 0 5px;
+    background-color: #2d2d2d;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 }

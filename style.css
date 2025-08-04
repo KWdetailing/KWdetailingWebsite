@@ -2528,10 +2528,6 @@ background: linear-gradient(
     justify-content: space-between; /* Optional: even spacing */
   }
 
-  .package-tabs .tab {
-    padding: 4px 7px;   /* Slightly smaller buttons on mobile */
-    font-size: 14px;
-  }
 
   .premium-tab {
     padding: 70px 20px; /* Let Premium stay a bit wider */

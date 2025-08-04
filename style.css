@@ -2529,7 +2529,7 @@ background: linear-gradient(
   }
 
   .package-tabs .tab {
-    padding: 8px 14px;   /* Slightly smaller buttons on mobile */
+    padding: 4px 7px;   /* Slightly smaller buttons on mobile */
     font-size: 14px;
   }
 

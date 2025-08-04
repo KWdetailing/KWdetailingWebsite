@@ -2521,15 +2521,3 @@ background: linear-gradient(
 
 
 
-@media (max-width: 768px) {
-  .package-tabs {
-    gap: 1%;         /* Reduce spacing between buttons */
-    flex-wrap: nowrap; /* Prevent stacking */
-    justify-content: space-between; /* Optional: even spacing */
-  }
-
-
-  .premium-tab {
-    padding: 70px 20px; /* Let Premium stay a bit wider */
-  }
-}

@@ -22,7 +22,7 @@ function calculatePrice() {
   const base = pricingTable[area][level] || 0;
   const total = base + sizeSurcharge[size] + typeSurcharge[type] + (headlights * 50);
 
-  result.textContent = `Don’t want to enter your email? Screenshot this quote: $${total} and DM or text us to book!`;
+  result.textContent = `Estimated Price: $${total} `;
   return total;
 }
 
